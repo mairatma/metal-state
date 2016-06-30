@@ -217,7 +217,7 @@ class State extends EventEmitter {
 		if (config.validator) {
 			var validatorReturn = this.callFunction_(config.validator, [value, name, this]);
 
-			if (validatorReturn instanceof Error) {
+			if (process.env.NODE_ENV === 'developement' && validatorReturn instanceof Error) {
 				console.error(`Warning: ${validatorReturn}`);
 			}
 			return validatorReturn;
